@@ -1,0 +1,21 @@
+platform: 履带最终交付平台
+hardware_evidence: 首批照片 P001–P011；型号标记按 E04、E05
+power:
+  battery_label: 48V65 智能款，标称 48 V / 充电 54.6 V
+  converter_label: 输入 48–100 V；输出 24 V / 20 A
+  verified_electrical_measurements: 0
+control:
+  digital: ZS-DIO-R-10A-8
+  analog: 0–5 V，双路，铭牌 CAN 选项
+  confirmed_bus: null
+  wiring_evidence:
+    one_end: 21
+    both_ends: 0
+    conflict: C13
+    next_wire: W003
+recording_simulation:
+  page: tools/camera-coverage/releases/v1.3/culvert-camera-lab-V1.3.0-offline.html
+  layout: tools/camera-coverage/releases/v1.3/default-layout.json
+  evidence: E24；按模型计算，待装车实拍
+deployed_vehicle_component_set: null
+acceptance: 保留原遥控；最终控制接口、停车和整机交付待核验。

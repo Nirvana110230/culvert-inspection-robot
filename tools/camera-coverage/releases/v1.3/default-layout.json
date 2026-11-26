@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "tunnel": {
+    "width": 2,
+    "height": 2,
+    "spring": 1,
+    "length": 10
+  },
+  "robot": {
+    "length": 0.8,
+    "width": 0.61,
+    "height": 0.67,
+    "lateral": 0,
+    "position": 0,
+    "yaw": 0,
+    "speed": 0.2
+  },
+  "display": {
+    "cutaway": true,
+    "frusta": true,
+    "footprints": true,
+    "occlusion": true,
+    "grid": true,
+    "opacity": 0.11
+  },
+  "cameras": [
+    {
+      "enabled": true,
+      "x": 0.16,
+      "y": 0,
+      "z": 0.87,
+      "yaw": 35,
+      "pitch": 20,
+      "roll": 0,
+      "hfov": 68.38,
+      "vfov": 41.82682361225197,
+      "lock": true,
+      "range": 4,
+      "resW": 3840,
+      "resH": 2160,
+      "fps": 25,
+      "exposure": 500,
+      "preset": "custom"
+    },
+    {
+      "enabled": true,
+      "x": -0.4,
+      "y": 0,
+      "z": 0.97,
+      "yaw": 91.3,
+      "pitch": -21.4,
+      "roll": 0,
+      "hfov": 79,
+      "vfov": 43.3,
+      "lock": false,
+      "resW": 3840,
+      "resH": 2160,
+      "fps": 20,
+      "preset": "hikvision4mm",
+      "range": 4,
+      "exposure": 500
+    },
+    {
+      "enabled": true,
+      "x": -0.4,
+      "y": 0,
+      "z": 0.75,
+      "yaw": 120,
+      "pitch": -50,
+      "roll": 0,
+      "hfov": 79,
+      "vfov": 43.3,
+      "lock": false,
+      "resW": 3840,
+      "resH": 2160,
+      "fps": 20,
+      "preset": "hikvision4mm",
+      "range": 4,
+      "exposure": 500
+    }
+  ]
+}

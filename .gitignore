@@ -1,0 +1,34 @@
+# 机器与受限资料
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+.ssh/
+restricted/
+sessions/
+archived_sessions/
+source-visible/
+__pycache__/
+*.py[cod]
+# ROS、固件与大型原始记录
+build/
+install/
+log/
+Output/
+*.db3
+*.sqlite*
+*.bag
+*.mcap
+*.pcd
+*.bin
+*.elf
+*.mkv
+*.mp4
+*.zip
+*.tar
+*.gz
+*.7z
+*.rar
+*.bundle

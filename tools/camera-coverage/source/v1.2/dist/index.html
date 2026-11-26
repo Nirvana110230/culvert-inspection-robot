@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="交互调整涵洞巡检机器人上三台相机的位置、朝向与视场，查看三维覆盖、洞壁投影和相机视角。">
+  <meta name="theme-color" content="#14191e">
+  <title>涵洞视场实验室 · Camera Field Lab</title>
+  <link rel="stylesheet" href="./style.css?v=1.2">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="涵洞视场实验室首页"><span class="brand-mark"><svg viewBox="0 0 32 32" fill="none"><path d="M5 27V16a11 11 0 0122 0v11M10 27V16a6 6 0 0112 0v11M4 27h24" stroke="currentColor" stroke-width="2"/><path d="M16 19v5m-3-2.5h6" stroke="currentColor" stroke-width="1.5"/></svg></span><span>涵洞视场实验室<small>CAMERA FIELD LAB</small></span></a>
+    <div class="project-context"><span class="status-dot"></span>履带巡检机器人<span class="slash">/</span>相机布局研究 <span class="version-tag">V1.2</span></div>
+    <div class="header-actions"><span id="save-state" class="saved-state">本机自动保存</span><button id="import-btn" class="btn quiet">导入方案</button><button id="export-btn" class="btn outline"><span>↗</span> 导出参数</button><button id="export-image-btn" class="btn primary-export">导出高清图</button><button id="export-settings-btn" class="icon-btn" aria-label="图片导出设置" title="图片导出设置">⚙</button><button id="help-btn" class="icon-btn" aria-label="使用说明">?</button></div>
+  </header>
+  <main class="workspace">
+    <section class="visual-workspace" aria-label="三维仿真工作区">
+      <div class="scene-toolbar"><div class="view-segment" role="group" aria-label="观察视角"><button class="active" data-view="orbit">三维透视</button><button data-view="front">正视截面</button><button data-view="top">俯视</button><button data-view="side">侧视</button></div><div class="toolbar-right"><button id="reset-view" class="text-btn">⌖ 归位</button><span class="divider"></span><label class="tiny-check"><input id="cutaway" type="checkbox" checked>剖开洞壁</label><label class="tiny-check"><input id="show-frusta" type="checkbox" checked>视场体</label><label class="tiny-check"><input id="show-footprints" type="checkbox" checked>覆盖投影</label><label class="tiny-check"><input id="show-preview" type="checkbox" checked>相机预览</label></div></div>
+      <div id="viewport" tabindex="0" aria-label="三维涵洞场景，拖动旋转，滚轮缩放，方向键调整选中相机角度">
+        <div id="webgl-error" class="error-box" hidden></div>
+        <div id="camera-labels" class="camera-labels" aria-hidden="true"></div>
+        <div class="scene-legend"><span><i style="--dot:#e1b564"></i>主云台</span><span><i style="--dot:#4ec7c0"></i>上后摄</span><span><i style="--dot:#dc8376"></i>下后摄</span></div>
+        <div class="axis-note"><b>x+ 车头 · y+ 左侧</b><span>网格间距 0.5 m</span></div>
+        <div id="camera-preview" class="preview-card"><div class="preview-head"><span><i id="preview-dot"></i><b id="preview-title">上后摄 · 相机视角</b></span><button id="preview-expand" aria-label="放大相机预览">⤢</button></div><div id="preview-render"><span id="preview-crosshair">+</span><span class="preview-watermark">几何预览</span></div><div class="preview-foot"><span id="preview-fov">58.3° × 34.8°</span><span>无照明 / 畸变模拟</span></div></div>
+        <div class="scene-instructions"><span><kbd>拖动</kbd>旋转</span><span><kbd>右键</kbd>平移</span><span><kbd>滚轮</kbd>缩放</span><span><kbd>↑ ↓ ← →</kbd>调角度</span></div>
+      </div>
+      <div id="bottom-panels" class="bottom-panels"><div id="bottom-resizer" class="resize-handle horizontal" role="separator" aria-orientation="horizontal" aria-label="调整底栏高度" aria-valuemin="130" aria-valuemax="600" aria-valuenow="276" tabindex="0" title="上下拖动调整底栏高度"></div><div class="bottom-content">
+      <div class="analysis-strip"><div class="metric"><span class="metric-name">中心射线距离</span><div><strong id="metric-distance">—</strong><em id="metric-surface">至左侧壁</em></div></div><div class="metric"><span class="metric-name">中心附近采样</span><div><strong id="metric-density">—</strong><em>px / mm · 理想投影</em></div></div><div class="metric"><span class="metric-name">1 mm 理想投影</span><div><strong id="metric-crack">—</strong><em>px · 局部最保守方向</em></div></div><div class="metric coverage-metric"><span class="metric-name">截面周界覆盖 <span title="按当前姿态向前扫过整段涵洞时，三台相机可触达的内壁高度区间；不含地面。">ⓘ</span></span><div><strong id="metric-coverage">—</strong><em>当前姿态沿线扫视估算</em></div></div></div>
+      <div class="coverage-panel"><div class="coverage-title"><div><span class="eyebrow">COVERAGE MAP</span><b>洞壁展开</b><span>从上至下：左墙 · 拱顶 · 右墙</span></div><span id="coverage-caption">三台相机 · 当前瞬时覆盖</span></div><div class="map-wrap"><canvas id="coverage-map" aria-label="涵洞内壁展开覆盖图"></canvas></div><div class="coverage-footer"><span>亮色为当前可见壁面；颜色重叠处可被多台相机看到。</span><span>沿线方向 →</span></div></div>
+      </div></div>
+    </section>
+    <aside class="inspector" aria-label="参数设置"><div id="sidebar-resizer" class="resize-handle vertical" role="separator" aria-orientation="vertical" aria-label="调整侧栏宽度" aria-valuemin="260" aria-valuemax="760" aria-valuenow="354" tabindex="0" title="左右拖动调整侧栏宽度"></div>
+      <div class="inspector-title"><div><span class="eyebrow">CONFIGURATION</span><h2>布置与视场</h2></div><button id="reset-all" class="text-btn">恢复初始</button></div>
+      <nav class="inspector-tabs" role="tablist"><button class="active" id="tab-cameras" data-tab="cameras" role="tab" aria-selected="true">相机参数</button><button id="tab-scene" data-tab="scene" role="tab" aria-selected="false">涵洞与底盘</button></nav>
+      <div class="adjustment-toolbar"><label for="adjustment-speed">滑块调节</label><select id="adjustment-speed" aria-label="滑块调节速度"><option value="0.2" selected>精调 · 慢5倍</option><option value="0.05">微调 · 慢20倍</option><option value="1">标准速度</option></select><span>拖动时 Shift 更细</span></div>
+      <div id="camera-panel" class="inspector-content" role="tabpanel" aria-labelledby="tab-cameras">
+        <div class="camera-picker" role="group" aria-label="选择相机"><button data-camera="0"><i style="--dot:#e1b564"></i>主云台</button><button class="active" data-camera="1"><i style="--dot:#4ec7c0"></i>上后摄</button><button data-camera="2"><i style="--dot:#dc8376"></i>下后摄</button></div>
+        <div class="camera-status"><div><span id="camera-index">CAM 02</span><h3 id="camera-name">上后摄</h3></div><label class="switch-label">启用<input id="camera-enabled" type="checkbox" checked role="switch"></label></div>
+        <section class="control-section"><h4><span>01</span> 安装位置 <small>相对车体中心 · m</small></h4><div id="position-controls"></div><p class="hint">前后 + 向车头；左右 + 向左；高度从地面算起。</p></section>
+        <section class="control-section"><h4><span>02</span> 镜头朝向 <small>°</small></h4><div id="orientation-controls"></div><div class="angle-reference"><span>0° 车头</span><span>+90° 左侧</span><span>±180° 车尾</span></div><div class="inline-actions"><button id="aim-left" class="small-btn">朝左侧</button><button id="aim-rear-left" class="small-btn">朝左后方</button><button id="portrait-btn" class="small-btn">切换横 / 竖装</button></div></section>
+        <section class="control-section"><h4><span>03</span> 镜头视场 <small>画幅坐标</small></h4><label class="field-label" for="lens-preset">视场预设</label><select id="lens-preset"><option value="custom">自定义视场</option><option value="candidate4">候选4 · 广角端 58.3°</option><option value="wide">对比用广视野 · 90°</option></select><p id="preset-note" class="hint">候选4视角暂按镜头表；仍需对应800万实物版本。</p><div id="fov-controls"></div><label class="check-row"><input id="aspect-lock" type="checkbox" checked>按 16:9 联动水平 / 垂直视角</label><div id="range-control"></div><p class="hint">视场体到首个障碍物截止；量程是可视化上限，不代表照明距离。</p></section>
+        <section class="control-section"><h4><span>04</span> 录像与清晰度估算</h4><div class="two-fields"><label>水平像素<input id="res-width" type="number" min="320" max="16384" step="1" value="3840"></label><label>垂直像素<input id="res-height" type="number" min="240" max="16384" step="1" value="2160"></label></div><div class="two-fields"><label>帧率 fps<input id="fps-input" type="number" min="1" max="240" value="25"></label><label>曝光时间 1 / s<input id="exposure-input" type="number" min="1" max="100000" value="500"></label></div><div class="estimate-box"><span>以当前模拟车速与曝光估算</span><b id="motion-estimate">—</b><small id="frame-estimate">—</small></div><p class="hint">这里只计算几何采样与平移模糊，不模拟镜头解析力、压缩、光照或识别准确率。</p></section>
+      </div>
+      <div id="scene-panel" class="inspector-content" role="tabpanel" aria-labelledby="tab-scene" hidden>
+        <section class="control-section"><h4><span>01</span> 涵洞截面 <small>m</small></h4><div id="tunnel-controls"></div><div class="shape-note"><b>直墙 + 半圆拱（可调整）</b><div id="section-dimensions" class="scene-dimension-summary"></div><span>总高 = 直墙高 + 拱高。默认宽2 m、总高2 m、直墙高1 m，上方为半径1 m的半圆拱；可按图纸修改。</span></div></section>
+        <section class="control-section"><h4><span>02</span> 履带底盘 <small>m</small></h4><div id="robot-size-controls"></div><p class="hint">默认值采用你上传的布局：0.80 × 0.61 × 0.67 m。</p></section>
+        <section class="control-section"><h4><span>03</span> 车辆位姿与行进</h4><div id="robot-pose-controls"></div><button id="play-btn" class="btn play-btn">▶ 沿涵洞行进</button><p class="hint">车辆到端部自动停止；可拖动前后位置回到起点。</p></section>
+        <section class="control-section"><h4><span>04</span> 场景显示</h4><label class="check-row"><input id="body-occlusion" type="checkbox" checked>考虑车体遮挡</label><label class="check-row"><input id="grid-toggle" type="checkbox" checked>显示地面标尺与坐标</label><div id="opacity-control"></div></section>
+      </div>
+      <div class="inspector-bottom"><span class="status-dot"></span><span id="layout-status">参数已就绪</span><button id="detail-btn" class="text-btn">模型说明 ↗</button></div>
+    </aside>
+  </main>
+  <div id="toast" role="status"></div>
+  <div id="export-result" class="export-result" hidden><span id="export-result-caption"></span><a id="export-preview-link" target="_blank" rel="noopener">预览图片</a><a id="export-image-download">保存PNG</a><button id="hide-export-result" aria-label="关闭图片导出提示">×</button></div>
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+  <dialog id="help-dialog"><div class="dialog-head"><div><span class="eyebrow">HOW IT WORKS</span><h2>把视角，放回真实空间。</h2></div><button id="close-help" class="icon-btn" aria-label="关闭说明">×</button></div><div class="help-body"><p>先在右侧选择相机，修改安装位置、偏航和俯仰，再调整水平与垂直视角。滑块默认以原先的1/5速度拖动，也可切换到慢20倍的微调。拖动时按住Shift可进一步减速；点击滑轨或数值旁的±按钮会逐步调整。所有滑块都配有数字输入框，可用键盘精确输入。相机预览可在顶部隐藏；拖动右侧和底部的分隔线可调整面板大小。点击“导出高清图”会导出当前观察角度的PNG，不带页面标题、尺寸或侧栏。</p><div class="help-grid"><div><b>三维视场体</b><p>矩形相机画幅形成四棱锥。彩色边线及壁面投影会在首个洞壁、地面或车体处截止。</p></div><div><b>相机视角</b><p>预览显示该相机实际朝向和画幅；参考条纹用于比较视野，画面不代表真实成像效果。</p></div><div><b>洞壁展开</b><p>把左墙、拱面、右墙连续摊平，显示当前瞬时覆盖；底部百分比估算保持当前姿态沿涵洞扫过时可触达的周界。</p></div><div><b>方向与单位</b><p>安装位置相对车体地面中心；+x前、+y左、+z上。偏航正值朝左，俯仰正值朝上。滚转旋转画幅。</p></div></div><p><b>初始参数：</b>涵洞宽2 m、总高2 m、直墙高1 m，上方是半径1 m的半圆拱。底盘0.8 × 0.61 × 0.67 m，相机安装点和角度采用你上传的方案。涵洞显示长度为10 m；两台后摄使用58.3°广角，按16:9推算垂直视角。</p><p><b>模型边界：</b>采用理想针孔模型、直墙与椭圆拱，无镜头畸变、光照、水面反射、滚动快门或车体抖动。像素采样足够不等于一定能辨认1 mm裂缝，需要实机录像验证。几何模型不作实车碰撞规划。</p><p class="keyboard-help"><kbd>↑</kbd><kbd>↓</kbd>俯仰 ±1°　<kbd>←</kbd><kbd>→</kbd>偏航 ±1°　<kbd>Shift</kbd>加速至5°　<kbd>1</kbd><kbd>2</kbd><kbd>3</kbd>选相机　<kbd>R</kbd>观察归位</p></div><button id="start-btn" class="btn primary">开始调整</button></dialog>
+  <dialog id="export-settings-dialog"><div class="dialog-head"><div><span class="eyebrow">IMAGE EXPORT</span><h2>高清三维图导出</h2></div><button id="close-export-settings" class="icon-btn" aria-label="关闭图片导出设置">×</button></div><div class="export-options"><label for="image-resolution">图片清晰度</label><select id="image-resolution"><option value="1920">高清 · 长边1920像素</option><option value="3840" selected>4K · 长边3840像素</option><option value="5760">超清 · 长边5760像素</option></select><label for="image-background">图片背景</label><select id="image-background"><option value="dark">深色 · 与当前场景一致</option><option value="white">白色</option><option value="transparent">透明PNG</option></select><label class="check-row"><input id="image-camera-labels" type="checkbox" checked>保留三台相机名称</label><p class="hint">按当前旋转、平移、缩放后的视角重新渲染；不包含网页标题、尺寸标注、相机预览、侧栏和底栏。</p></div><button id="apply-export-settings" class="btn primary">保存设置</button></dialog>
+  <script type="module" src="./app.js?v=1.2"></script>
+</body>
+</html>

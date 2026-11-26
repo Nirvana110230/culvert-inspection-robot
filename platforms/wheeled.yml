@@ -1,0 +1,60 @@
+platform: 轮式研究及毕业设计平台
+engineering_baseline: 第一版双后驱；第二版四驱为设计资料 E03
+hardware:
+  historic_controller: STM32F103ZET6
+  historical_main_computer: Jetson Orin Nano Super
+  mapping_research_host: Orange Pi 5 Ultra
+  wheel_drive: MSSD-60EHB_2D
+  historical_battery: 24 V / 30 Ah
+firmware:
+  repository: culvert-wheel-firmware
+  commit: 3f451e24dc33f046e5c389608a31a6151c5eed17
+  release_tag: wheel-rc-20261124-53c7df15b82d
+  evidence:
+  - E18
+  - E19
+  - E20
+  - E21
+interfaces:
+  drive_bus:
+    kind: RS485
+    baud: 9600
+    frame: 8N1
+  host_uart:
+    baud: 115200
+    frame: 8N1
+mapping:
+  source_commit: a9727f89e348faa218410bce9e834992395d54c2
+  role: 轮式平台的传感器研究基线；实际安装外参须随装车配置核对
+  calibration_release: calibration_v1
+  camera_model: pinhole
+  image_size:
+  - 1280
+  - 1024
+  K:
+  - - 1297.754900243953
+    - 0.0
+    - 655.3979063879893
+  - - 0.0
+    - 1299.166933102416
+    - 501.2026449669307
+  - - 0.0
+    - 0.0
+    - 1.0
+  D:
+  - -0.08265631931699047
+  - 0.13391147021521527
+  - -0.00032649255292178974
+  - 0.00029400314258161474
+  - 0.0
+  distortion_order:
+  - k1
+  - k2
+  - p1
+  - p2
+  - k3
+  source: E07
+localization:
+  candidate_commit: 1308f8b302ec9548aa0079ac8a4c76c1f39f3ba6
+  scope: 隔离同刻接口、离线定位，仍缺实测 T_imu_base 与实车独立复访
+acceptance: 新版遥控运动由用户确认。整车导航、制动距离、续航指标各自待证。

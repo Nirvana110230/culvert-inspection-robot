@@ -1,0 +1,86 @@
+{
+  "html": "culvert-camera-lab-V1.3.0-offline.html",
+  "sha256": "6eb6a8928465490038ee3c08504b757ea8589d80ee676264194a6750ead5b330",
+  "parts": [
+    {
+      "part": "styles.css",
+      "start_byte": 1541,
+      "end_byte_exclusive": 24878,
+      "first_line": 32,
+      "bytes": 23337,
+      "sha256": "0fdc34fc4888d88743383f4414d3c8b074cc97cab5d01e9b30a4091c2117fd9a"
+    },
+    {
+      "part": "strict.js",
+      "start_byte": 39958,
+      "end_byte_exclusive": 39972,
+      "first_line": 106,
+      "bytes": 14,
+      "sha256": "77f5eec38c5ef075e11892244ccf9e249d82937e07401398df98319568775a17"
+    },
+    {
+      "part": "three.js",
+      "start_byte": 39972,
+      "end_byte_exclusive": 1360891,
+      "first_line": 107,
+      "bytes": 1320919,
+      "sha256": "e40f23a3dbbf8ca19f874a3ee6b4722e7f313e18c3aafb7d21a6de8f961aba97"
+    },
+    {
+      "part": "orbit.js",
+      "start_byte": 1360891,
+      "end_byte_exclusive": 1393053,
+      "first_line": 54682,
+      "bytes": 32162,
+      "sha256": "0eda9fb571b6555352c1a08f62fbdaa11879cf7be0e3bc0d20e7e3a5b2682106"
+    },
+    {
+      "part": "geometry.js",
+      "start_byte": 1393053,
+      "end_byte_exclusive": 1404588,
+      "first_line": 56207,
+      "bytes": 11535,
+      "sha256": "e6b285e25d2e8155dae043033bc028ce42617af87fed172b5247d5c88486ef1f"
+    },
+    {
+      "part": "software.js",
+      "start_byte": 1404588,
+      "end_byte_exclusive": 1411721,
+      "first_line": 56425,
+      "bytes": 7133,
+      "sha256": "cc4a3cea1e476bddacb3edd23f2e483452415745ca215fdba66b933d5312dc71"
+    },
+    {
+      "part": "scene.js",
+      "start_byte": 1411721,
+      "end_byte_exclusive": 1433952,
+      "first_line": 56493,
+      "bytes": 22231,
+      "sha256": "9ca5b3b15ee8adfa664ed4737ec6c6f8f8ad4182d5137fbbdf8989d5a464d304"
+    },
+    {
+      "part": "slider.js",
+      "start_byte": 1433952,
+      "end_byte_exclusive": 1434414,
+      "first_line": 56697,
+      "bytes": 462,
+      "sha256": "89fda90c79f1bc9dc63b2a2b4125bc19a52fd154024c535974dc694d5278e724"
+    },
+    {
+      "part": "workspace.js",
+      "start_byte": 1434414,
+      "end_byte_exclusive": 1440236,
+      "first_line": 56707,
+      "bytes": 5822,
+      "sha256": "bd2f299ee7e084ad7275c66401dd6c0aa3868d3c2c7710f0852aae80744fb420"
+    },
+    {
+      "part": "application.js",
+      "start_byte": 1440236,
+      "end_byte_exclusive": 1461513,
+      "first_line": 56772,
+      "bytes": 21277,
+      "sha256": "721122593de73409d0c901454ea8a176d58d4f79b5087696e7aa5263e5329910"
+    }
+  ]
+}

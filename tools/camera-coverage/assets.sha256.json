@@ -1,0 +1,113 @@
+{
+  "algorithm": "SHA-256",
+  "encoding": "UTF-8",
+  "self_excluded": "assets.sha256.json",
+  "count": 21,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5112,
+      "sha256": "423d6ce2422e3e13a3eae8f7cc81afb864d57e5eaa940653cba7a904a532c220"
+    },
+    {
+      "path": "docs/site-versions.json",
+      "bytes": 705,
+      "sha256": "c57196591459225aeda1c400d9dd0a69f8457a7f0d2c2eefc569b26363df5df6"
+    },
+    {
+      "path": "docs/录像覆盖计算-原文转录.md",
+      "bytes": 2491,
+      "sha256": "b978c5e7f8132efc07e3aace785827e3ca13e7d7d1cd90815210a7ec0cf4cbd7"
+    },
+    {
+      "path": "docs/网页开发交接-可共享摘录.md",
+      "bytes": 13682,
+      "sha256": "44d9a3e6ccf13e4bb91e1145f7461cbcd7764dca1d4334613dc3fd02be67e72d"
+    },
+    {
+      "path": "licenses/Three-OrbitControls-MIT.txt",
+      "bytes": 1082,
+      "sha256": "f8ea8e1b14776d862129c02e78297c1de103e958f8212c6c5d594ec07f78f7c9"
+    },
+    {
+      "path": "releases/v1.2/culvert-camera-lab-offline.html",
+      "bytes": 1459356,
+      "sha256": "e7315be9847bf385d2c38abcfd66e7897d65d9a906a0a50d5937fae06af15617"
+    },
+    {
+      "path": "releases/v1.2/default-layout.json",
+      "bytes": 1511,
+      "sha256": "77f2e616c23140882b50e1ec73198b614efc161580e3a160c065d97e8d0433b9"
+    },
+    {
+      "path": "releases/v1.2/embedded-source-map.json",
+      "bytes": 2598,
+      "sha256": "c2b0facb63b44f5d58bdf0ac5dc8cc76cda50883d7a28f069f88c5f9711516db"
+    },
+    {
+      "path": "releases/v1.3/culvert-camera-lab-V1.3.0-offline.html",
+      "bytes": 1461539,
+      "sha256": "6eb6a8928465490038ee3c08504b757ea8589d80ee676264194a6750ead5b330"
+    },
+    {
+      "path": "releases/v1.3/default-layout.json",
+      "bytes": 1487,
+      "sha256": "d7e7992d4bdf9eb9c7045a9482a86629b778ea0e2c53a5259bd3b6e8dd8fb883"
+    },
+    {
+      "path": "releases/v1.3/embedded-source-map.json",
+      "bytes": 2605,
+      "sha256": "e9d983bbd7e0702573caac3d8a47a2fd88ffe72dd59499bcfad4a04da38f5f3c"
+    },
+    {
+      "path": "source/v1.2/dist/app.js",
+      "bytes": 20141,
+      "sha256": "08e697f3662a2f071701779e0ef438fad9e857d4c7f85288397bb4467e8b2a20"
+    },
+    {
+      "path": "source/v1.2/dist/geometry.js",
+      "bytes": 11031,
+      "sha256": "ff0ee688e7aba275c4823dcc462cb73cd50e5019c85c61c5a502c587b49b6b19"
+    },
+    {
+      "path": "source/v1.2/dist/index.html",
+      "bytes": 15259,
+      "sha256": "eb37c686d2da3220f81712dbb3bf4c7d5d354e1ed4539a0ea8d3e0b485d15d40"
+    },
+    {
+      "path": "source/v1.2/dist/scene.js",
+      "bytes": 22292,
+      "sha256": "37d4b733fc26b3d52e7361cdccd73289eba139c82f69de834477910d976aeebd"
+    },
+    {
+      "path": "source/v1.2/dist/slider.js",
+      "bytes": 396,
+      "sha256": "9429ff278f2d5a78f0a7c1f1ba3abb0f3d099692953604ebf0717271e34a09ab"
+    },
+    {
+      "path": "source/v1.2/dist/software-renderer.js",
+      "bytes": 7098,
+      "sha256": "706358999ddb804f48688a9274b333a3dfb6ab772d53f46d1c81d23f7374c2b8"
+    },
+    {
+      "path": "source/v1.2/dist/style.css",
+      "bytes": 22919,
+      "sha256": "0a1d143d1028da1a202687c1d487f277010fc26453c64f126a2646a62f09c69f"
+    },
+    {
+      "path": "source/v1.2/dist/vendor/OrbitControls.js",
+      "bytes": 32134,
+      "sha256": "80efaadea4f8a636a65fb0bd08bfef62f3d93a0bb94e2e7500f23176c5c07f4e"
+    },
+    {
+      "path": "source/v1.2/dist/vendor/three.module.js",
+      "bytes": 1314681,
+      "sha256": "ce1fa418de16a19495a9f72495580e3015d7745c296d3ce0485897f902ddedfb"
+    },
+    {
+      "path": "source/v1.2/dist/workspace.js",
+      "bytes": 5759,
+      "sha256": "fe5c27802d6f8bd8239da47e6e821272e6915d862abb1f9c9d5dc537faf0f866"
+    }
+  ]
+}

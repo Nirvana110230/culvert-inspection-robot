@@ -1,0 +1,23 @@
+[
+  {
+    "site_version": 3,
+    "commit": "f2821a0a629871defb3c00fe827b08ef34575c62",
+    "archive_sha256": "42554cec97df5843e319612fdead79f383004848cb0a633811948ed644a9bdd9",
+    "archive_bytes": 1464320,
+    "archive_files": 12
+  },
+  {
+    "site_version": 2,
+    "commit": "184ac9311022613291e6c3f10a5d62838f88bc2e",
+    "archive_sha256": "a8524951460ee55a40c621bf9659be6b6bda9d92243e72ce76ae48fb6ef13d55",
+    "archive_bytes": 1454080,
+    "archive_files": 11
+  },
+  {
+    "site_version": 1,
+    "commit": "4e4bce7d559f775026ee3f06b2df95241314ae4a",
+    "archive_sha256": "40b0477a2645afeafaa560f12ba0f31655d51761113fc2574b0c9a66391e0e42",
+    "archive_bytes": 1443840,
+    "archive_files": 10
+  }
+]
