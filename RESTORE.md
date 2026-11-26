@@ -1,4 +1,10 @@
-# 本地恢复
+# 工程恢复
+
+从 GitHub 新克隆总仓后，先读取 COMPONENT_VERSION_MANIFEST.yml。已认证的 Git 客户端可运行 `python tools/checkout_components.py ../locked-components`，在新目录取得三个固定版本。脚本依赖 PyYAML。固件发布制品从 wheel 仓对应 GitHub Release 下载，以 SHA256SUMS.txt 核对。研发会话的脱敏正文和索引随总仓检出，见 [历史目录](knowledge/history/)。
+
+## G2 原始现场恢复
+
+下面保留 G2 本地原件恢复方法，适用于追溯当时的暂存区、未提交工作和原始设备资料。
 
 下文的 candidates、restricted、work 和 audit 均位于同一个隔离工作区。先从 audit/ASSET_PRESERVATION_MANIFEST.csv 核对容器 SHA256，再恢复至新建空目录。机器路径见 restricted/source-locators.json。受限区和审计交付须通过本地授权取得。
 

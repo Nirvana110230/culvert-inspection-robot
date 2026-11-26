@@ -1,144 +1,77 @@
 as_of: '2026-11-26'
 integration: culvert-inspection-robot
-distribution: 本机隔离候选，禁止上传直至权属及身份通过复核
+visibility: private
+owner: Nirvana110230
 platforms:
   wheeled: 测试及毕设，已确认遥控运动
   tracked: 最终交付目标，控制接口待实测
 components:
-- candidate: culvert-wheel-firmware
-  intended_owner: Nirvana110230
+- repository: culvert-wheel-firmware
+  remote: https://github.com/Nirvana110230/culvert-wheel-firmware.git
+  branch: main
   commit: 3f451e24dc33f046e5c389608a31a6151c5eed17
   tree: a5eb334642d34a470e81d5119348c2aedd35b794
-  local_tag: wheel-rc-20261124-53c7df15b82d
-  candidate_files: 163
-  remote: null
-  original_base: 9ba32a469f7a193fd05ad8d931891b542bad1e3f
-  original_commits: 8
+  tag: wheel-rc-20261124-53c7df15b82d
+  files: 163
+  g2_baseline:
+    tag: wheel-rc-20261124-53c7df15b82d
+    commit: 3f451e24dc33f046e5c389608a31a6151c5eed17
+  release: https://github.com/Nirvana110230/culvert-wheel-firmware/releases/tag/wheel-rc-20261124-53c7df15b82d
+  release_asset_sha256:
+    HANDOFF.md: 893dfcaf72ac77673698451f609fbbbdf21e7acf8f3430d3e51e7c8d5937c166
+    inspection_robot_chassis.bin: 9e2cfe9f01bc11583fe1c177266680ac0882d62587292e802053b46c0f32ebb6
+    inspection_robot_chassis.elf: 895ef44a9812cf519f2af378142d773c9024f15fb227365bba752735da5f8da3
+    inspection_robot_chassis.hex: 7125e38866f7b96866390989b95e866c592f54e76cc72dc7e7f0bfc5657561e8
+    inspection_robot_chassis.map: 7779237f8ccd41e93ccd53f7478b3c462be23007aad66c583c319e9b5b909229
+    SHA256SUMS.txt: 5371b3e7fefcd5c1fd3c91fe528fd6ff3c0d7d870d770cfc87afc3d13958b833
+    source-SHA256SUMS.txt: 53c7df15b82d5dc87087d27ccb0beafdfea059aaf4b1b0628560038c984e44db
   source_manifest_sha256: 53c7df15b82d5dc87087d27ccb0beafdfea059aaf4b1b0628560038c984e44db
-  source_zip_sha256: 7024c31b285ed5e3773a28d81ed7460a276900ff5734d4472beae37df123f5e4
-  artifacts:
-    Release/inspection_robot_chassis.bin:
-      sha256: 9e2cfe9f01bc11583fe1c177266680ac0882d62587292e802053b46c0f32ebb6
-      bytes: 31248
-    Release/inspection_robot_chassis.elf:
-      sha256: 895ef44a9812cf519f2af378142d773c9024f15fb227365bba752735da5f8da3
-      bytes: 67244
-    Release/inspection_robot_chassis.hex:
-      sha256: 7125e38866f7b96866390989b95e866c592f54e76cc72dc7e7f0bfc5657561e8
-      bytes: 87967
-    Release/inspection_robot_chassis.map:
-      sha256: 7779237f8ccd41e93ccd53f7478b3c462be23007aad66c583c319e9b5b909229
-      bytes: 250041
-    Debug/inspection_robot_chassis.bin:
-      sha256: 79724e4441806143496d9f512b86f3a2206b4d3b0e7d935ce9a2c224d4a04efb
-      bytes: 57744
-    Debug/inspection_robot_chassis.elf:
-      sha256: 3034a42eabdeeb8bde5c0fdab0630f61044b53d4328a1df2d9cc24c24c890612
-      bytes: 1137236
-    Debug/inspection_robot_chassis.hex:
-      sha256: 3b5e1fbe3943c2149ac3ca5fff45ab18e7aff500af34b6cf3bd382d250f31d3e
-      bytes: 162487
-    Debug/inspection_robot_chassis.map:
-      sha256: 24590401ebcf3f55c3be824031ba27892108b17120d05d0e60f7c8dab6842bd1
-      bytes: 659910
+  original_base: 9ba32a469f7a193fd05ad8d931891b542bad1e3f
   historical_board_readback:
     bytes: 31248
     sha256: 9e2cfe9f01bc11583fe1c177266680ac0882d62587292e802053b46c0f32ebb6
     session: 01a20c96-da33-76c2-b3a8-369093e3feec
     local_bytes_reverified: true
-  validation:
-  - 正式清单、ZIP、维护树、Git blob、独立检出 163/163
-  - 历史 Host Test 15/15
-  - 2026-11-24 回读样本与 Release 二进制比较一致
-  - 用户确认新版固件烧录后实车遥控运动正常
-  - 机械制动距离、当前板载状态待另验
-- candidate: culvert-fast-livo2
-  intended_owner: Nirvana110230
-  commit: 602c8f4fb293e6b0cce93a4921dbdeb1df811dcb
-  tree: 6fae9f1ebff2af9b9d87bedea60fc94336a11ce0
-  local_tag: g2-maintenance-20261126
-  candidate_files: 38
-  remote: null
-  candidate_scope: 已筛查的维护子集；完整可恢复工程见受限备份
+  g3_verification: 163 项源码匹配；Release 重新构建的 BIN 与发布和历史回读件逐字节相同；Host CTest 15/15。
+- repository: culvert-fast-livo2
+  remote: https://github.com/Nirvana110230/culvert-fast-livo2.git
+  branch: main
+  commit: c8e656075883bc6616566276678cc57a13cf8378
+  tree: 6304346d31aa34faf06ba0b0952f7199524931b0
+  tag: g3-stage-a-20261126
+  files: 527
+  g2_baseline:
+    tag: g2-maintenance-20261126
+    commit: 602c8f4fb293e6b0cce93a4921dbdeb1df811dcb
   formal_stage_a:
-    baseline_commit: 24e2e2c142f1e7bc2b8ff76c5f37795be5580c42
     source_commit: a9727f89e348faa218410bce9e834992395d54c2
     source_subtree: 2d9290d4378bd58d8998af142d569f645031e82d
-    documentation_commit: 178525fd795b77afd61fc668bfee53c799e1e2d9
-    documentation_subtree: c8bc5ccc974db0f8ba99347ffe7356d748f820e5
-    documentation_changes_inside_component:
-    - fast_livo2/records/stage_a/changes_after_20261121.patch
-    - fast_livo2/records/stage_a/release.json
-    maintained_paths: 245
-    manifest_sha256: e6c985eb6092604ce7aff2ebd82f706c8b91d9ce1f9cd4215c571a2c89733b11
-    verified_disk_bytes_against_git_blob_ids: 245
-    incremental_patch_sha256: d911b6cd111d59705d429d751a3eddef35b5a64c7924f3af36d542c2a6664e4e
-    deployed_installed_elf_according_to_historical_journal: b66a92cd81de2ebc9428c4483908a97e1e1bfd207802a4cca8ee4829e683d49e
-    tested_candidate_build_elf: 15a362dad0e701123fb2cf363372ae8c12224e50d70f4802d833faae1977b6da
-    tested_build_id: 14f4b686dcbd40ba5ba79bd24d0e39a2ce471cf2
-    native_formal_build_elf: 12f89544a78fdc7b03823ec26f32795fd89a3614beb9dcf7bc920bd20ac25d2c
-    native_formal_install_elf_before_adopting_tested_install: 56292d495d010f07d277fef008868674ed0ecf54b60a2e937b9a0236057f9b11
-    rollback_package_sha256: fa3841604cc236073ba1eebf0267c17245cc9c2e6dde9c7b967243db8c438655
-    device_checked_this_round: false
-    evidence_sha256:
-      fast_livo2/records/stage_a/release.json: 3e5aef35a20ead896178fa9514a0fb3948c10a7d9fb830760a326bff2309b14e
-      docs/mainline/2026-11-23/stage_a/evidence/formal-verification.json: 119c85e7c68c3f9738cdb8f49e9ebb43f3f57627f49398452d0fab246131b54e
-      docs/mainline/2026-11-23/stage_a/evidence/postflight.json: 264551aa26787a1601345523aa161b9b62343244f93b17b52beae48aabeca54d
-      docs/mainline/2026-11-23/stage_a/evidence/deploy-retry.log: bf11abd331ad46781d388b19821af1f5142ad2353ceccf632a5dcd59f4d53d93
-  b0_isolated:
-    base_commit: a9727f89e348faa218410bce9e834992395d54c2
+    g2_maintained_manifest_sha256: e6c985eb6092604ce7aff2ebd82f706c8b91d9ce1f9cd4215c571a2c89733b11
+    board_matches_g2_paths: 245
+    board_install_elf_sha256: b66a92cd81de2ebc9428c4483908a97e1e1bfd207802a4cca8ee4829e683d49e
+  b0_experiment:
+    branch: research/stage-b0
+    commit: fc468aa9cec0d537f6d2d49ad27057d097434152
+    tree: 3057b5d1aa5a57f770a15a87c933c063b7baead8
+    tags:
+    - g3-stage-b0-20261126
     patch_sha256: 57ebeea36023239e816860f249ebdd12df983fa30c218fd0492432adb779d594
-    patch_dry_run_against_formal_sources: pass
-    historical_candidate_source_changes:
-      src/fast_livo/include/LIVMapper.h: 5d2fa382caea7faebe6b5b81d3388c55a2276af70bc59b327557a030f54fd8a9
-      src/fast_livo/src/LIVMapper.cpp: eb38e32676d6d9a5bf0af8317398c699d2549b52293870d36cf773800bb2c9a3
-    historical_install_elf: e9f7eaeb7260fe13304e1b846426b6a21dc91776d6128f991e6caeacab481469
-    historical_build_elf: 9791fa3f693b30e3d7bb94b91aea807c829b90e068c2addcffa2bbc0b385121c
-    historical_build_id: 85e725b4b672db14eaa254e07e6c829bde4cbdf6
-    deployed: false
-    result: 同一手持包三次离线重放，576个姿态和两份地图分别一致。两个尾段区间局部一致性变差，缺少独立真值。
-    evidence_sha256:
-      docs/mainline/2026-11-23/stage_b0/evidence/startup_imu.patch: 57ebeea36023239e816860f249ebdd12df983fa30c218fd0492432adb779d594
-      docs/mainline/2026-11-23/stage_b0/evidence/postflight.json: 00b9b5feebcfedfff94d0d07fb91faadc0138d91c3bc910e1bf12528c7701599
-      docs/mainline/2026-11-23/stage_b0/evidence/fixed.json: 2d765c1a3bdbba65108cc4d79098868aa284ff57225787fd55a249eba9356a90
-      docs/mainline/2026-11-23/stage_b0/evidence/quality.json: 34ec77608a13dcd1c20e6704d36ef148203c1da02bfc93c3491b5448954872ab
-  later:
-    '2026-11-25': 隔离导航 v3 接口、R1、R2 同时刻配对和 ICP/GICP 离线定位，独立导航仓承接。双主机 USB 文档按受限运维材料归档。
-    '2026-11-26': 便携供电开机快检 243.11 s，不能推断长时带载余量、输入电压或电流。
-    evidence_sha256:
-      docs/hardware_health/2026-11-26/USB供电快检_105104.txt: b4b6a4c59d64a9f93555865b941e46e1844f1e059cf5a1957bfc29b10418d77d
-      docs/ssh_usb/2026-11-25/双主机_USB_SSH_实施报告.md: 89379e59b8b4634d4d806837b84a96d06665fdd7a8eea9f901008d6ef555708f
-- candidate: culvert-navigation
-  intended_owner: Nirvana110230
-  commit: 1308f8b302ec9548aa0079ac8a4c76c1f39f3ba6
-  tree: a4c76866915f92e176a87715539ada4bdcc17675
-  local_tag: g2-r2-offline-20261126
-  candidate_files: 41
-  remote: null
-  original_source_head: unborn
-  original_index_sha256: 07ef0dec3b0b168a484d4c05b307af4b1b3c2c512b2b68a924aeabab393b67c2
-  index_entries: 342
-  am_pairs: 4
+    historical_candidate_install_elf_sha256: e9f7eaeb7260fe13304e1b846426b6a21dc91776d6128f991e6caeacab481469
+    deployed_to_formal_A: false
+- repository: culvert-navigation
+  remote: https://github.com/Nirvana110230/culvert-navigation.git
+  branch: main
+  commit: 8ce82600a7136c3dae08c9174a913b20a1f679f6
+  tree: c17843a341c3a786882fee15d1a5139b214feb7d
+  tag: g3-nav-r1-r2-20261126
+  files: 185
+  g2_baseline:
+    tag: g2-r2-offline-20261126
+    commit: 1308f8b302ec9548aa0079ac8a4c76c1f39f3ba6
   adapter_version: 0.1.0
+  registration_version: 0.2.0
   r1_adapter_elf_sha256: 9aadb02153f16ea7891b1cc4435f12c763e9e9759ab4e47cc3e784bc58993d07
   r1_frontend_v3_sha256: 11f84bef10cf79c6be904862b1fe5b39a0cc204e97c7b8026be6f306c1f8754f
-  registration_version: 0.2.0
-  validation:
-  - CONDITIONAL GO。隔离 v3 同刻接口与适配器，历史板端 11 项 GoogleTest、25 项 ROS 集成断言。正式配置缺实测 T_imu_base 和运动限值，生产输出闭锁。
-  - CONDITIONAL GO。两个后端、模式 A/B、联合离线重放与同袋留一回归。近初值 GICP 为候选，独立建图、跨次实车复访、锚点和绝对轨迹真值待核验。
-  small_gicp:
-    commit: fa0cfc983417c044b6036f71dfa448038bb9c820
-    expected_tree: ddfae80300c3fa21fd761ebacc7b8e36659f8aa4
-    reconstructed_tree: ddfae80300c3fa21fd761ebacc7b8e36659f8aa4
-    files: 153
-    archive_sha256: 5a1eb2b81a21b4715571b4e953fa9c3759a4ae24f6b4a4b7d6c2ef0501ffb935
-  frozen_binary_sha256: 912f30512f2d6ebea6febd13583a5d37982b85e1b91cb5a9b28d9b60a9da8cad
-  evidence_sha256:
-    docs/2026-11-25/00_第一轮工作总览.md: 6be012617fd2c2ca7613279189f529cab6d11616680ab9f0119bf03a9d199e52
-    patches/fast_livo2_culvert_source.patch: 8454af256a47e91e9aa9ea7576ac9f2ea1bf1e6ffea9e751fcc56d5c30f0c12e
-    docs/2026-11-25/evidence/protection-result.json: 0424c7a7de88e5c73ffc12f835560fd3b7694126044e5422a2d7adf54d719a52
-    docs/R2_2026-11-25/00_R2工作总览与阶段结论.md: 8f63b10cfdc60cb02262ea432e4874e8de2af9d953d57aca1ab097bb653b9947
-    docs/R2_2026-11-25/evidence/delivery-verification.json: 4fb573a3f7bcd976946e6371b00ce7d970e72a5372c353c7ebbe95f12b18c81f
-    docs/R2_2026-11-25/evidence/upstream-verification.json: 9e61d2804bf76ab9b4503cca2ce7c441a272c4f9c15713c44ff72ab76d8c3e66
-    benchmarks/r2/results/cases.csv: d50d4d6ff013796142dca15a39c53d4a7f2a87a22ea5d4eb42023d18f9e21096
-    benchmarks/r2/results/summary.json: 683b076d6a7cc0cf2bcf455270b93a86047a404bae00d7dcea37671315c9b2a2
+  r2_worker_sha256: 912f30512f2d6ebea6febd13583a5d37982b85e1b91cb5a9b28d9b60a9da8cad
+  small_gicp_upstream_commit: fa0cfc983417c044b6036f71dfa448038bb9c820
+  small_gicp_upstream_tree: ddfae80300c3fa21fd761ebacc7b8e36659f8aa4
