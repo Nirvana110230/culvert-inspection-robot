@@ -8,6 +8,7 @@
 .ssh/
 restricted/
 sessions/
+!knowledge/history/sessions/
 archived_sessions/
 source-visible/
 __pycache__/
