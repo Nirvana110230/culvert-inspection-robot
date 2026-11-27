@@ -6,7 +6,7 @@
 |---|---|---|
 | 整车集成、相机覆盖仿真、研发知识和平台文档 | [culvert-inspection-robot](https://github.com/Nirvana110230/culvert-inspection-robot) | `E:\culvert-inspection-integration\repos\culvert-inspection-robot` |
 | 轮式 STM32 固件 | [culvert-wheel-firmware](https://github.com/Nirvana110230/culvert-wheel-firmware) | `E:\culvert-inspection-integration\repos\culvert-wheel-firmware` |
-| Orange Pi 正式建图 A、独立 B0 实验 | [culvert-fast-livo2](https://github.com/Nirvana110230/culvert-fast-livo2) | `E:\culvert-inspection-integration\repos\culvert-fast-livo2` |
+| Orange Pi 正式建图 B1、历史 A 与独立 B0 | [culvert-fast-livo2](https://github.com/Nirvana110230/culvert-fast-livo2) | `E:\culvert-inspection-integration\repos\culvert-fast-livo2` |
 | Orange Pi 导航 R1/R2、隔离前端适配及补丁 | [culvert-navigation](https://github.com/Nirvana110230/culvert-navigation) | `E:\culvert-inspection-integration\repos\culvert-navigation` |
 
 旧工程、G2 的 candidates、受限保全副本以及板端运行目录用作来源、冻结基线或部署目标。专项变更从对应正式仓分支开始，在新检出或隔离工作树内验证，再由总仓更新组件的完整 Git SHA。先核实设备现场差异并保留证据，再按正式仓的变更部署。B0 的实验代码和结果保持独立，发布时标明具体分支、标签和制品摘要。

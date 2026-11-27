@@ -1,6 +1,6 @@
-as_of: '2026-11-26'
+as_of: '2026-11-27'
 integration: culvert-inspection-robot
-visibility: private
+visibility: public  # integration repository
 owner: Nirvana110230
 platforms:
   wheeled: 测试及毕设，已确认遥控运动
@@ -36,14 +36,16 @@ components:
 - repository: culvert-fast-livo2
   remote: https://github.com/Nirvana110230/culvert-fast-livo2.git
   branch: main
-  commit: c8e656075883bc6616566276678cc57a13cf8378
-  tree: 6304346d31aa34faf06ba0b0952f7199524931b0
-  tag: g3-stage-a-20261126
-  files: 527
+  commit: 082098ff69052e02397807094cdfa9c4a412b9e7
+  tree: 0985a89d1c43c7de66982d5a980f7dcd8e817e97
+  tag: stage-b1-20261127
+  files: 530
   g2_baseline:
     tag: g2-maintenance-20261126
     commit: 602c8f4fb293e6b0cce93a4921dbdeb1df811dcb
   formal_stage_a:
+    tag: g3-stage-a-20261126
+    commit: c8e656075883bc6616566276678cc57a13cf8378
     source_commit: a9727f89e348faa218410bce9e834992395d54c2
     source_subtree: 2d9290d4378bd58d8998af142d569f645031e82d
     g2_maintained_manifest_sha256: e6c985eb6092604ce7aff2ebd82f706c8b91d9ce1f9cd4215c571a2c89733b11
@@ -58,6 +60,13 @@ components:
     patch_sha256: 57ebeea36023239e816860f249ebdd12df983fa30c218fd0492432adb779d594
     historical_candidate_install_elf_sha256: e9f7eaeb7260fe13304e1b846426b6a21dc91776d6128f991e6caeacab481469
     deployed_to_formal_A: false
+  formal_b1:
+    board_install_elf_sha256: a4e4320cac0668987bf15a4a8199430c50a5a65cd008ef00aace1a960f70aeb2
+    gnu_build_id: f68d9a7fdd797e43c9b248fb93164db211b4aa98
+    release_record: deploy/release.json
+    resolved_sha256: 92c6a9b4d22e5b26873d43b62e3915d1e33dcc42fac0fdb5ede9250eb791bd2d
+    near_filter_m: 0.5
+    validation: ARM64 Release，手持包一次 1× 回放，map_gravity 归档
 - repository: culvert-navigation
   remote: https://github.com/Nirvana110230/culvert-navigation.git
   branch: main
