@@ -1,5 +1,9 @@
 # 工程变更记录
 
+## 2026-11-27 · FAST-LIVO2 B1 首次走廊移动建图 · Baseline 01
+
+人工手推式四轮小推车在 Orange Pi 5 Ultra 与标称 5 V / 3 A 移动供电条件下完成首次室内走廊移动建图。约 180 m 的估计移动段中完成独立运行、实时融合、录包与地图归档，57 个 SQLite 分片和 7,035 个位姿保留为现场基线。下一阶段验证时序、实测精度和正式底盘集成。部署身份继续指向 `stage-b1-20261127`。[组件仓正式报告](https://github.com/Nirvana110230/culvert-fast-livo2/blob/b12a7b31753e628ed877160c5d59b5224ea223ca/docs/experiments/2026-11-27/first_corridor_test/FAST-LIVO2_B1_%E9%A6%96%E6%AC%A1%E8%B5%B0%E5%BB%8A%E7%A7%BB%E5%8A%A8%E5%BB%BA%E5%9B%BE%E5%AE%9E%E9%AA%8C%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A_20261127.md) · [组件仓实验归档](https://github.com/Nirvana110230/culvert-fast-livo2/tree/b12a7b31753e628ed877160c5d59b5224ea223ca/docs/experiments/2026-11-27/first_corridor_test)
+
 ## 2026-11-27 · FAST-LIVO2 B1
 
 建图组件锁定 `stage-b1-20261127`。板端使用含 B0 启动 IMU 修复和 0.5 m 近距修复的 B1，沿用五个入口、实机身份配置与 NVMe 保存路径。一次手持回放归档 576 个位姿、1,132,757 个几何点和 203,173 个彩色点。[组件版本记录](https://github.com/Nirvana110230/culvert-fast-livo2/blob/stage-b1-20261127/deploy/release.json)
